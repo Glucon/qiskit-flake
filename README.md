@@ -40,7 +40,6 @@ nix develop .
         devShells.default =
           pkgs.mkShell {
             packages = [
-              pkgs.nixpkgs-fmt
               (inputs'.qiskit-flake.legacyPackages.python3Packages.withPackages (
                 p: with p; [
                   qiskit
