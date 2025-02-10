@@ -1,0 +1,13 @@
+diff --git a/cmake/spdlog.pc.in b/cmake/spdlog.pc.in
+index 861707c3..66c8dfac 100644
+--- a/cmake/spdlog.pc.in
++++ b/cmake/spdlog.pc.in
+@@ -1,7 +1,6 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+-exec_prefix=${prefix}
+ includedir=${prefix}/include
+-libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++libdir=@CMAKE_INSTALL_LIBDIR@
+ 
+ Name: lib@PROJECT_NAME@
+ Description: Fast C++ logging library.
