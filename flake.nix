@@ -29,18 +29,18 @@
         in
         {
 
-          legacyPackages.python3Packages = mkPythonEnv pkgs.python3;
-          legacyPackages.python39Packages = mkPythonEnv pkgs.python39;
-          legacyPackages.python310Packages = mkPythonEnv pkgs.python310;
-          legacyPackages.python311Packages = mkPythonEnv pkgs.python311;
-          legacyPackages.python312Packages = mkPythonEnv pkgs.python312;
-          legacyPackages.python313Packages = mkPythonEnv pkgs.python313;
+          legacyPackages.python3 = mkPythonEnv pkgs.python3;
+          legacyPackages.python39 = mkPythonEnv pkgs.python39;
+          legacyPackages.python310 = mkPythonEnv pkgs.python310;
+          legacyPackages.python311 = mkPythonEnv pkgs.python311;
+          legacyPackages.python312 = mkPythonEnv pkgs.python312;
+          legacyPackages.python313 = mkPythonEnv pkgs.python313;
 
           devShells.default =
             pkgs.mkShell {
               inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
               buildInputs = [
-                (self'.legacyPackages.python3Packages.withPackages (p: with p; [ qiskit qiskit-aer ]))
+                (self'.legacyPackages.python3.withPackages (p: with p; [ qiskit qiskit-aer ]))
               ];
             };
 
