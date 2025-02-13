@@ -10,6 +10,7 @@ let
       qiskit-aer = pyfinal.callPackage ./pkgs/qiskit-aer.nix {
         inherit spdlog_1_9_2 nlohmann_json_3_1_1;
       };
+      qiskit-machine-learning = pyfinal.callPackage ./pkgs/qiskit-machine-learning.nix { };
     };
   };
 in

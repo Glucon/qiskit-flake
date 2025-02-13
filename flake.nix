@@ -40,7 +40,11 @@
             pkgs.mkShell {
               inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
               buildInputs = [
-                (self'.legacyPackages.python3.withPackages (p: with p; [ qiskit qiskit-aer ]))
+                (self'.legacyPackages.python3.withPackages (p: with p; [
+                  qiskit
+                  qiskit-aer
+                  qiskit-machine-learning
+                ]))
               ];
             };
 
