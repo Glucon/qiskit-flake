@@ -9,7 +9,7 @@
 , scipy
 , scikit-learn
 , dill
-,
+, ...
 }:
 
 buildPythonPackage rec {
