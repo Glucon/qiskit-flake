@@ -16,12 +16,12 @@
 }:
 buildPythonPackage rec {
   pname = "qiskit-aer";
-  version = "0.16.1";
+  version = "0.17";
   src = fetchFromGitHub {
     owner = "Qiskit";
     repo = "qiskit-aer";
     rev = "refs/tags/${version}";
-    hash = "sha256-JeXGaVSsUmjdQHxQ0lDjwFiuoFMDPDIibxNMGEmEBOc=";
+    hash = "sha256-RgDs91w8iAV5ZjuMMmpK59JHYWN/oH3KWMw++JfH298=";
   };
   dontUseCmakeConfigure = true;
   DISABLE_CONAN = true;
