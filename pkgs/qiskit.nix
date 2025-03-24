@@ -16,12 +16,12 @@
 }:
 buildPythonPackage rec {
   pname = "qiskit";
-  version = "1.3.2";
+  version = "1.4.2";
   src = fetchFromGitHub {
     owner = "qiskit";
     repo = "Qiskit";
     rev = version;
-    hash = "sha256-GrwrTUek921NEpn51+Pj/KJZExkeWokxFkd0CqrFjMo=";
+    hash = "sha256-R9baj15eHyAc5rNx7fixTJrL8mhaDJDceE/00n55heU=";
   };
   propagatedBuildInputs = [
     rustworkx
@@ -35,13 +35,9 @@ buildPythonPackage rec {
   ];
   nativeBuildInputs = [ setuptools-rust rustc cargo rustPlatform.cargoSetupHook ];
 
-  # cargoDeps = rustPlatform.fetchCargoVendor {
-  # for fetchCargoVendor
-  # https://github.com/NixOS/nixpkgs/issues/377558
-
-  cargoDeps = rustPlatform.fetchCargoTarball {
+  cargoDeps = rustPlatform.fetchCargoVendor {
     inherit pname version src;
-    hash = "sha256-PyClKtoncJsHgvjK5aZFKLtUMhezFD5zkppew2XrBY0=";
+    hash = "sha256-BEkiGuVU00CxTdTm1p0cjtX63xczrSiJ+1LsF4vR6Ho=";
   };
   doCheck = false;
 }
