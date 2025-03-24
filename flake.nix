@@ -44,6 +44,8 @@
                   qiskit
                   qiskit-aer
                   qiskit-machine-learning
+                  isort
+                  black
                 ]))
               ];
             };
