@@ -43,9 +43,6 @@
                 (self'.legacyPackages.python3.withPackages (p: with p; [
                   qiskit
                   qiskit-aer
-                  qiskit-machine-learning
-                  isort
-                  black
                 ]))
               ];
             };
