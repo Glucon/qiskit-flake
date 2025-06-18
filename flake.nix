@@ -30,11 +30,12 @@
         {
 
           legacyPackages.python3 = mkPythonEnv pkgs.python3;
-          legacyPackages.python39 = mkPythonEnv pkgs.python39;
-          legacyPackages.python310 = mkPythonEnv pkgs.python310;
-          legacyPackages.python311 = mkPythonEnv pkgs.python311;
-          legacyPackages.python312 = mkPythonEnv pkgs.python312;
-          legacyPackages.python313 = mkPythonEnv pkgs.python313;
+          legacyPackages."python3.9" = mkPythonEnv pkgs.python39;
+          legacyPackages."python3.10" = mkPythonEnv pkgs.python310;
+          legacyPackages."python3.11" = mkPythonEnv pkgs.python311;
+          legacyPackages."python3.12" = mkPythonEnv pkgs.python312;
+          legacyPackages."python3.13" = mkPythonEnv pkgs.python313;
+          legacyPackages."python3.14" = mkPythonEnv pkgs.python314;
 
           devShells.default =
             pkgs.mkShell {
