@@ -26,27 +26,27 @@
           mkPythonEnv = pythonVersion: (import ./python.nix {
             inherit pkgs pythonVersion;
           });
+          pyVersions = [ "python3" "python39" "python310" "python311" "python312" "python313" "python314" ];
+          pythonUse = "python3";
         in
         {
+          legacyPackages = lib.genAttrs pyVersions (v: mkPythonEnv pkgs.${v});
 
-          legacyPackages.python3 = mkPythonEnv pkgs.python3;
-          legacyPackages."python3.9" = mkPythonEnv pkgs.python39;
-          legacyPackages."python3.10" = mkPythonEnv pkgs.python310;
-          legacyPackages."python3.11" = mkPythonEnv pkgs.python311;
-          legacyPackages."python3.12" = mkPythonEnv pkgs.python312;
-          legacyPackages."python3.13" = mkPythonEnv pkgs.python313;
-          legacyPackages."python3.14" = mkPythonEnv pkgs.python314;
+          packages.default = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
+          packages.qsikit = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
+          packages.qsiki-aer = self'.legacyPackages.${pythonUse}.pkgs.qiskit-aer;
+          packages.qiskit-machine-learning = self'.legacyPackages.${pythonUse}.pkgs.qiskit-machine-learning;
 
-          devShells.default =
-            pkgs.mkShell {
-              inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
-              buildInputs = [
-                (self'.legacyPackages.python3.withPackages (p: with p; [
-                  qiskit
-                  qiskit-aer
-                ]))
-              ];
-            };
+          devShells.default = pkgs.mkShell {
+            inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
+            buildInputs = [
+              (self'.legacyPackages.${pythonUse}.withPackages (p: with p; [
+                qiskit
+                qiskit-aer
+                qiskit-machine-learning
+              ]))
+            ];
+          };
 
           pre-commit = {
             check.enable = true;
