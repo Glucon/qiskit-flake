@@ -4,24 +4,21 @@
   setuptools
   # Python Inputs
 , numpy
-, psutil
 , qiskit_1
 , scipy
-, scikit-learn
-, dill
 , ...
 }:
 
 buildPythonPackage rec {
-  pname = "qiskit-machine-learning";
-  version = "0.8.3";
+  pname = "qiskit-algorithms";
+  version = "0.3.1";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "qiskit-community";
     repo = pname;
     tag = version;
-    hash = "sha256-XnLCejK6m8p/OC5gKCoP1UXVblISChu3lKF8BnrnRbk=";
+    hash = "";
   };
 
   nativeBuildInputs = [ setuptools ];
@@ -30,9 +27,6 @@ buildPythonPackage rec {
     qiskit_1
     scipy
     numpy
-    psutil
-    scikit-learn
-    dill
   ];
 
   doCheck = false;
