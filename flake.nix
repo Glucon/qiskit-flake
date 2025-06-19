@@ -33,8 +33,9 @@
           legacyPackages = lib.genAttrs pyVersions (v: mkPythonEnv pkgs.${v});
 
           packages.default = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
-          packages.qsikit = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
-          packages.qsiki-aer = self'.legacyPackages.${pythonUse}.pkgs.qiskit-aer;
+          packages.qiskit = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
+          packages.qiskit_1 = self'.legacyPackages.${pythonUse}.pkgs.qiskit_1;
+          packages.qiskit-aer = self'.legacyPackages.${pythonUse}.pkgs.qiskit-aer;
           packages.qiskit-machine-learning = self'.legacyPackages.${pythonUse}.pkgs.qiskit-machine-learning;
 
           devShells.default = pkgs.mkShell {
@@ -43,7 +44,6 @@
               (self'.legacyPackages.${pythonUse}.withPackages (p: with p; [
                 qiskit
                 qiskit-aer
-                qiskit-machine-learning
               ]))
             ] ++ (with pkgs; [
               just
