@@ -37,6 +37,7 @@
           packages.qiskit_1 = self'.legacyPackages.${pythonUse}.pkgs.qiskit_1;
           packages.qiskit-aer = self'.legacyPackages.${pythonUse}.pkgs.qiskit-aer;
           packages.qiskit-machine-learning = self'.legacyPackages.${pythonUse}.pkgs.qiskit-machine-learning;
+          packages.qiskit-algorithms = self'.legacyPackages.${pythonUse}.pkgs.qiskit-algorithms;
 
           devShells.default = pkgs.mkShell {
             inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];

@@ -18,7 +18,7 @@ buildPythonPackage rec {
     owner = "qiskit-community";
     repo = pname;
     tag = version;
-    hash = "";
+    hash = "sha256-YKwXvR7Lc4Sxw3fKVxMRsy9PxhFzi1FjUY6ipDXo/s8=";
   };
 
   nativeBuildInputs = [ setuptools ];
