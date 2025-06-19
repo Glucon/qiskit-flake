@@ -6,10 +6,11 @@ let
   pythonEnv = pythonVersion.override {
     packageOverrides = self: super: {
       qiskit = self.callPackage ./pkgs/qiskit.nix { };
+      qiskit_1 = self.callPackage ./pkgs/qiskit_1.nix { };
       qiskit-aer = self.callPackage ./pkgs/qiskit-aer.nix {
         inherit spdlog_1_9_2 nlohmann_json_3_1_1;
       };
-      qiskit-machine-learning = self.callPackage ./pkgs/qiskit-machine-learning.nix { };
+      qiskit-machine-learning = self.callPackage ./pkgs/qiskit-machine-learning.nix { qiskit_1 = self.qiskit_1; };
     };
   };
 in

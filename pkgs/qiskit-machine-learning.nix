@@ -5,7 +5,7 @@
   # Python Inputs
 , numpy
 , psutil
-, qiskit
+, qiskit_1
 , scipy
 , scikit-learn
 , dill
@@ -14,20 +14,20 @@
 
 buildPythonPackage rec {
   pname = "qiskit-machine-learning";
-  version = "0.8.2";
+  version = "0.8.3";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "qiskit";
     repo = pname;
     tag = version;
-    hash = "sha256-dvGUtB7R44B+DYZKl4R2Q0GdvLTjVKWD0KmuyCoaOSc=";
+    hash = "sha256-XnLCejK6m8p/OC5gKCoP1UXVblISChu3lKF8BnrnRbk=";
   };
 
   nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
-    qiskit
+    qiskit_1
     scipy
     numpy
     psutil
