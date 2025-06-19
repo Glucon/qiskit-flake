@@ -18,8 +18,8 @@ buildPythonPackage rec {
   pname = "qiskit";
   version = "1.4.3";
   src = fetchFromGitHub {
-    owner = "qiskit";
-    repo = "Qiskit";
+    owner = "Qiskit";
+    repo = pname;
     rev = version;
     hash = "sha256-Oaq83K9R5MxXlbHk31BK2bd9c+SVbg4uCTW1UOJa+w0=";
   };

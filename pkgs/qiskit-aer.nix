@@ -19,8 +19,8 @@ buildPythonPackage rec {
   version = "0.17.1";
   src = fetchFromGitHub {
     owner = "Qiskit";
-    repo = "qiskit-aer";
-    rev = "refs/tags/${version}";
+    repo = pname;
+    rev = version;
     hash = "sha256-jvapuARJUHgAKFUzGb5MUft01LNefVIXtStJqFnCo90=";
   };
   dontUseCmakeConfigure = true;
