@@ -45,7 +45,9 @@
                 qiskit-aer
                 qiskit-machine-learning
               ]))
-            ];
+            ] ++ (with pkgs; [
+              just
+            ]);
           };
 
           pre-commit = {
