@@ -26,24 +26,42 @@
           mkPythonEnv = pythonVersion: (import ./python.nix {
             inherit pkgs pythonVersion;
           });
-          pyVersions = [ "python3" "python39" "python310" "python311" "python312" "python313" "python314" ];
-          pythonUse = "python3";
+          pyVersions = [ "python3" "python310" "python311" "python312" "python313" "python314" ];
         in
         {
           legacyPackages = lib.genAttrs pyVersions (v: mkPythonEnv pkgs.${v});
 
-          packages.default = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
-          packages.qiskit = self'.legacyPackages.${pythonUse}.pkgs.qiskit;
-          packages.qiskit_1 = self'.legacyPackages.${pythonUse}.pkgs.qiskit_1;
-          packages.qiskit-aer = self'.legacyPackages.${pythonUse}.pkgs.qiskit-aer;
-          packages.qiskit-machine-learning = self'.legacyPackages.${pythonUse}.pkgs.qiskit-machine-learning;
-          packages.qiskit-algorithms = self'.legacyPackages.${pythonUse}.pkgs.qiskit-algorithms;
-          packages.qiskit-nature = self'.legacyPackages.${pythonUse}.pkgs.qiskit-nature;
+          packages = { default = self'.legacyPackages.python3.pkgs.qiskit; } // builtins.listToAttrs (
+            lib.flatten (
+              lib.forEach pyVersions (v: [
+                {
+                  name = "qiskit_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit;
+                }
+                {
+                  name = "qiskit-aer_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit-aer;
+                }
+                {
+                  name = "qiskit-machine-learning_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit-machine-learning;
+                }
+                {
+                  name = "qiskit-algorithms_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit-algorithms;
+                }
+                {
+                  name = "qiskit-nature_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit-nature;
+                }
+              ])
+            )
+          );
 
           devShells.default = pkgs.mkShell {
             inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
             buildInputs = [
-              (self'.legacyPackages.${pythonUse}.withPackages (p: with p; [
+              (self'.legacyPackages.python3.withPackages (p: with p; [
                 qiskit
                 qiskit-aer
               ]))
