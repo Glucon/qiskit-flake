@@ -1,15 +1,16 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, # build-system
-  setuptools
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  # build-system
+  setuptools,
   # Python Inputs
-, numpy
-, psutil
-, qiskit_1
-, scipy
-, scikit-learn
-, dill
-, ...
+  numpy,
+  psutil,
+  qiskit_1,
+  scipy,
+  scikit-learn,
+  dill,
+  ...
 }:
 
 buildPythonPackage rec {

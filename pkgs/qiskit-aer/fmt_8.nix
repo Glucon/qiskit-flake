@@ -1,22 +1,22 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, enableShared ? !stdenv.hostPlatform.isStatic
-, # tests
-  mpd
-, openimageio
-, fcitx5
-, spdlog
-,
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  enableShared ? !stdenv.hostPlatform.isStatic,
+  # tests
+  mpd,
+  openimageio,
+  fcitx5,
+  spdlog,
 }:
 
 let
   generic =
-    { version
-    , hash
-    , patches ? [ ]
-    ,
+    {
+      version,
+      hash,
+      patches ? [ ],
     }:
     stdenv.mkDerivation {
       pname = "fmt";
@@ -71,4 +71,3 @@ generic {
   version = "8.1.1";
   hash = "sha256-leb2800CwdZMJRWF5b1Y9ocK0jXpOX/nwo95icDf308=";
 }
-

@@ -1,19 +1,20 @@
-{ fetchFromGitHub
-, rustPlatform
-, rustc
-, cargo
-, buildPythonPackage
-, rustworkx
-, numpy
-, scipy
-, dill
-, python-dateutil
-, stevedore
-, typing-extensions
-, symengine
-, setuptools
-, setuptools-rust
-, ...
+{
+  fetchFromGitHub,
+  rustPlatform,
+  rustc,
+  cargo,
+  buildPythonPackage,
+  rustworkx,
+  numpy,
+  scipy,
+  dill,
+  python-dateutil,
+  stevedore,
+  typing-extensions,
+  symengine,
+  setuptools,
+  setuptools-rust,
+  ...
 }:
 buildPythonPackage rec {
   pname = "qiskit";
@@ -36,7 +37,12 @@ buildPythonPackage rec {
     typing-extensions
     symengine
   ];
-  nativeBuildInputs = [ setuptools-rust rustc cargo rustPlatform.cargoSetupHook ];
+  nativeBuildInputs = [
+    setuptools-rust
+    rustc
+    cargo
+    rustPlatform.cargoSetupHook
+  ];
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit pname version src;
@@ -44,4 +50,3 @@ buildPythonPackage rec {
   };
   doCheck = false;
 }
-

@@ -1,9 +1,9 @@
-{ stdenv
-, fetchFromGitHub
-, cmake
-, hostPlatform
-, lib
-,
+{
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  hostPlatform,
+  lib,
 }:
 stdenv.mkDerivation rec {
   name = "nlohmann_json-${version}";
@@ -20,17 +20,12 @@ stdenv.mkDerivation rec {
 
   enableParallelBuilding = true;
 
-  cmakeFlags =
-    [
-      "-DBuildTests=${
-        if doCheck
-        then "ON"
-        else "OFF"
-      }"
-    ]
-    ++ lib.optionals (hostPlatform.libc == "msvcrt") [
-      "-DCMAKE_SYSTEM_NAME=Windows"
-    ];
+  cmakeFlags = [
+    "-DBuildTests=${if doCheck then "ON" else "OFF"}"
+  ]
+  ++ lib.optionals (hostPlatform.libc == "msvcrt") [
+    "-DCMAKE_SYSTEM_NAME=Windows"
+  ];
 
   doCheck = false;
 

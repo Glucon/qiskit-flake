@@ -1,16 +1,17 @@
-{ buildPythonPackage
-, fetchFromGitHub
-, # build-system
-  setuptools
+{
+  buildPythonPackage,
+  fetchFromGitHub,
+  # build-system
+  setuptools,
   # Python Inputs
-, qiskit
-, qiskit-algorithms
-, scipy
-, numpy
-, h5py
-, rustworkx
-, psutil
-, ...
+  qiskit,
+  qiskit-algorithms,
+  scipy,
+  numpy,
+  h5py,
+  rustworkx,
+  psutil,
+  ...
 }:
 
 buildPythonPackage rec {

@@ -17,21 +17,51 @@
     };
   };
 
-  outputs = inputs @ { flake-parts, ... }:
+  outputs =
+    inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.git-hooks.flakeModule inputs.treefmt-nix.flakeModule ];
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
-      perSystem = { config, self', inputs', pkgs, system, lib, ... }:
+      imports = [
+        inputs.git-hooks.flakeModule
+        inputs.treefmt-nix.flakeModule
+      ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      perSystem =
+        {
+          config,
+          self',
+          inputs',
+          pkgs,
+          system,
+          lib,
+          ...
+        }:
         let
-          mkPythonEnv = pythonVersion: (import ./python.nix {
-            inherit pkgs pythonVersion;
-          });
-          pyVersions = [ "python3" "python310" "python311" "python312" "python313" "python314" ];
+          mkPythonEnv =
+            pythonVersion:
+            (import ./python.nix {
+              inherit pkgs pythonVersion;
+            });
+          pyVersions = [
+            "python3"
+            "python310"
+            "python311"
+            "python312"
+            "python313"
+            "python314"
+          ];
         in
         {
           legacyPackages = lib.genAttrs pyVersions (v: mkPythonEnv pkgs.${v});
 
-          packages = { default = self'.legacyPackages.python3.pkgs.qiskit; } // builtins.listToAttrs (
+          packages = {
+            default = self'.legacyPackages.python3.pkgs.qiskit;
+          }
+          // builtins.listToAttrs (
             lib.flatten (
               lib.forEach pyVersions (v: [
                 {
@@ -63,13 +93,19 @@
           );
 
           devShells.default = pkgs.mkShell {
-            inputsFrom = [ config.pre-commit.devShell config.treefmt.build.devShell ];
+            inputsFrom = [
+              config.pre-commit.devShell
+              config.treefmt.build.devShell
+            ];
             buildInputs = [
-              (self'.legacyPackages.python3.withPackages (p: with p; [
-                qiskit
-                qiskit-aer
-              ]))
-            ] ++ (with pkgs; [
+              (self'.legacyPackages.python3.withPackages (
+                p: with p; [
+                  qiskit
+                  qiskit-aer
+                ]
+              ))
+            ]
+            ++ (with pkgs; [
               just
             ]);
           };
@@ -77,10 +113,13 @@
           pre-commit = {
             check.enable = true;
             settings.hooks = {
-              nixpkgs-fmt.enable = true;
+              nixfmt-rfc-style.enable = true;
               shfmt = {
                 enable = true;
-                args = [ "-i" "2" ];
+                args = [
+                  "-i"
+                  "2"
+                ];
               };
               prettier = {
                 enable = true;
@@ -92,7 +131,7 @@
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
-              nixpkgs-fmt.enable = true;
+              nixfmt.enable = true;
               shfmt.enable = true;
               prettier.enable = true;
             };

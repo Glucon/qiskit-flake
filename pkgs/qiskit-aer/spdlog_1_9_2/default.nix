@@ -1,9 +1,9 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, cmake
-, fmt_8
-,
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
+  fmt_8,
 }:
 stdenv.mkDerivation rec {
   pname = "spdlog";
@@ -28,26 +28,20 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = lib.optional (lib.versionAtLeast version "1.3") fmt_8;
 
   cmakeFlags = [
-    "-DSPDLOG_BUILD_SHARED=${
-      if stdenv.hostPlatform.isStatic
-      then "OFF"
-      else "ON"
-    }"
-    "-DSPDLOG_BUILD_STATIC=${
-      if stdenv.hostPlatform.isStatic
-      then "ON"
-      else "OFF"
-    }"
+    "-DSPDLOG_BUILD_SHARED=${if stdenv.hostPlatform.isStatic then "OFF" else "ON"}"
+    "-DSPDLOG_BUILD_STATIC=${if stdenv.hostPlatform.isStatic then "ON" else "OFF"}"
     "-DSPDLOG_BUILD_EXAMPLE=OFF"
     "-DSPDLOG_BUILD_BENCH=OFF"
     "-DSPDLOG_BUILD_TESTS=ON"
     "-DSPDLOG_FMT_EXTERNAL=ON"
   ];
 
-  outputs =
-    [ "out" "doc" ]
-    # spdlog <1.4 is header only, no need to split libraries and headers
-    ++ lib.optional (lib.versionAtLeast version "1.4") "dev";
+  outputs = [
+    "out"
+    "doc"
+  ]
+  # spdlog <1.4 is header only, no need to split libraries and headers
+  ++ lib.optional (lib.versionAtLeast version "1.4") "dev";
 
   postInstall = ''
     mkdir -p $out/share/doc/spdlog
