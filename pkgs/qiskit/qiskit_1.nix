@@ -11,18 +11,21 @@
 , stevedore
 , typing-extensions
 , symengine
+, setuptools
 , setuptools-rust
 , ...
 }:
 buildPythonPackage rec {
   pname = "qiskit";
-  version = "2.1.0";
+  version = "1.4.3";
   src = fetchFromGitHub {
     owner = "Qiskit";
     repo = pname;
     rev = version;
-    hash = "sha256-2aPlm1IsJ10ixT4qnSTd0U4NpDHV+yYQv3+3SYML2kQ=";
+    hash = "sha256-Oaq83K9R5MxXlbHk31BK2bd9c+SVbg4uCTW1UOJa+w0=";
   };
+  pyproject = true;
+  build-system = [ setuptools ];
   propagatedBuildInputs = [
     rustworkx
     numpy
@@ -37,7 +40,7 @@ buildPythonPackage rec {
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit pname version src;
-    hash = "sha256-G1JC0Tur6MbNiCS8ACPDQ6eeeuZJRaCkgl/j9ne/sfg=";
+    hash = "sha256-EDvP0CZErC9z+SfiMPHrxYrbmmnui3f3bk0ptfOfca8=";
   };
   doCheck = false;
 }

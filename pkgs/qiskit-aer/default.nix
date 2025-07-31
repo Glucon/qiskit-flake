@@ -23,12 +23,16 @@ buildPythonPackage rec {
     rev = version;
     hash = "sha256-jvapuARJUHgAKFUzGb5MUft01LNefVIXtStJqFnCo90=";
   };
+  pyproject = true;
+  build-system = [ setuptools ];
+  patches = [
+    ./remove_canon.patch
+  ];
   dontUseCmakeConfigure = true;
   DISABLE_CONAN = true;
   buildInputs = [ spdlog_1_9_2 nlohmann_json_3_1_1 blas ];
-  nativeBuildInputs = [ setuptools scikit-build cmake ninja pybind11 ];
+  nativeBuildInputs = [ scikit-build cmake ninja pybind11 ];
   propagatedBuildInputs = [ numpy scipy psutil qiskit ];
   doCheck = false;
-  patches = [ ];
 }
 
