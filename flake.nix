@@ -39,6 +39,10 @@
                   value = self'.legacyPackages.${v}.pkgs.qiskit;
                 }
                 {
+                  name = "qiskit_1_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit_1;
+                }
+                {
                   name = "qiskit-aer_${v}";
                   value = self'.legacyPackages.${v}.pkgs.qiskit-aer;
                 }
