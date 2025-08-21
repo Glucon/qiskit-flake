@@ -18,12 +18,12 @@
 }:
 buildPythonPackage rec {
   pname = "qiskit";
-  version = "2.1.1";
+  version = "2.1.2";
   src = fetchFromGitHub {
     owner = "Qiskit";
     repo = pname;
     rev = version;
-    hash = "sha256-WHfsl/T4lmnvkGY7gF5PStilGq3G66TZG9oB1tKwuOQ=";
+    hash = "sha256-9/Z9wFAgSjC+3FsfUz9zwqXEU8EBB9UJdXXrf+kvj6o=";
   };
   pyproject = true;
   build-system = [ setuptools ];
@@ -46,7 +46,7 @@ buildPythonPackage rec {
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit pname version src;
-    hash = "sha256-MqHm2J+8xXFzm8/ob76hfNeQgTu0CiWrGCo+oXLPEuc=";
+    hash = "sha256-xVQmOBn7rGVa2Ze71kRn9j4WnKh0aMTKB965ZfCpqkQ=";
   };
   doCheck = false;
 }
