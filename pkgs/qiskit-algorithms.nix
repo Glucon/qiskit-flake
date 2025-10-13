@@ -5,27 +5,27 @@
   setuptools,
   # Python Inputs
   numpy,
-  qiskit_1,
+  qiskit,
   scipy,
   ...
 }:
 
 buildPythonPackage rec {
   pname = "qiskit-algorithms";
-  version = "0.3.1";
+  version = "0.4.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "qiskit-community";
     repo = pname;
     tag = version;
-    hash = "sha256-YKwXvR7Lc4Sxw3fKVxMRsy9PxhFzi1FjUY6ipDXo/s8=";
+    hash = "sha256-qQ8UID43tc6ODUyocas12cbXEsVdP7/q4s/fkYrP4fc=";
   };
 
   nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
-    qiskit_1
+    qiskit
     scipy
     numpy
   ];

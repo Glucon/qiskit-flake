@@ -102,11 +102,14 @@
                 p: with p; [
                   qiskit
                   qiskit-aer
+                  qiskit-algorithms
+                  qiskit-nature
                 ]
               ))
             ]
             ++ (with pkgs; [
               just
+              nixfmt
             ]);
           };
 
