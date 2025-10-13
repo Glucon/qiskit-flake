@@ -17,12 +17,12 @@
 }:
 buildPythonPackage rec {
   pname = "qiskit-aer";
-  version = "0.17.1";
+  version = "0.17.2";
   src = fetchFromGitHub {
     owner = "Qiskit";
     repo = pname;
     rev = version;
-    hash = "sha256-jvapuARJUHgAKFUzGb5MUft01LNefVIXtStJqFnCo90=";
+    hash = "sha256-aVmGoLMnDjV3iB9s4tvcL62zKvH/p70mqeGsxHzi3nc=";
   };
   pyproject = true;
   build-system = [ setuptools ];

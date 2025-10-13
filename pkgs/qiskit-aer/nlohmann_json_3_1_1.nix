@@ -22,6 +22,7 @@ stdenv.mkDerivation rec {
 
   cmakeFlags = [
     "-DBuildTests=${if doCheck then "ON" else "OFF"}"
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
   ]
   ++ lib.optionals (hostPlatform.libc == "msvcrt") [
     "-DCMAKE_SYSTEM_NAME=Windows"
