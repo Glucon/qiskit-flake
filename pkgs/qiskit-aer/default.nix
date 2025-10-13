@@ -11,8 +11,10 @@
   scipy,
   psutil,
   qiskit,
-  nlohmann_json_3_1_1,
-  spdlog_1_9_2,
+  nlohmann_json,
+  spdlog,
+  # nlohmann_json_3_1_1,
+  # spdlog_1_9_2,
   ...
 }:
 buildPythonPackage rec {
@@ -32,8 +34,10 @@ buildPythonPackage rec {
   dontUseCmakeConfigure = true;
   DISABLE_CONAN = true;
   buildInputs = [
-    spdlog_1_9_2
-    nlohmann_json_3_1_1
+    spdlog
+    nlohmann_json
+    # spdlog_1_9_2
+    # nlohmann_json_3_1_1
     blas
   ];
   nativeBuildInputs = [
