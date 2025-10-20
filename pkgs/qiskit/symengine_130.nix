@@ -25,6 +25,10 @@ buildPythonPackage rec {
     hash = "sha256-PJUzA86SGCnDpqU9j/dr3PlM9inyi8SQX0HGqPQ9wQw=";
   };
 
+  cmakeFlags = [
+    "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+  ];
+
   env = {
     SymEngine_DIR = "${symengine}";
   };
