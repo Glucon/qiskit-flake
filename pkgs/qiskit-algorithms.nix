@@ -5,7 +5,7 @@
   setuptools,
   # Python Inputs
   numpy,
-  qiskit-1,
+  qiskit_1,
   scipy,
   ...
 }:
