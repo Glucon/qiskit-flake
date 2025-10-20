@@ -5,8 +5,9 @@ let
   # nlohmann_json_3_1_1 = pkgs.callPackage ./pkgs/qiskit-aer/nlohmann_json_3_1_1.nix { };
   pythonEnv = pythonVersion.override {
     packageOverrides = self: super: {
+      symengine_130 = self.callPackage ./pkgs/qiskit/symengine_130.nix { };
       qiskit = self.callPackage ./pkgs/qiskit { };
-      qiskit_1 = self.callPackage ./pkgs/qiskit/qiskit_1.nix { };
+      qiskit_1 = self.callPackage ./pkgs/qiskit/qiskit_1.nix { symengine_130 = self.symengine_130; };
       qiskit-aer = self.callPackage ./pkgs/qiskit-aer {
         # inherit spdlog_1_9_2 nlohmann_json_3_1_1;
       };

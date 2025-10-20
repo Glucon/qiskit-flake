@@ -11,7 +11,7 @@
   python-dateutil,
   stevedore,
   typing-extensions,
-  symengine,
+  symengine_130,
   setuptools,
   setuptools-rust,
   ...
@@ -35,7 +35,7 @@ buildPythonPackage rec {
     python-dateutil
     stevedore
     typing-extensions
-    symengine
+    symengine_130
   ];
   nativeBuildInputs = [
     setuptools-rust
