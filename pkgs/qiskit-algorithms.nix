@@ -5,7 +5,7 @@
   setuptools,
   # Python Inputs
   numpy,
-  qiskit,
+  qiskit-1,
   scipy,
   ...
 }:
@@ -25,7 +25,7 @@ buildPythonPackage rec {
   nativeBuildInputs = [ setuptools ];
 
   propagatedBuildInputs = [
-    qiskit
+    qiskit_1
     scipy
     numpy
   ];

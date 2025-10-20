@@ -34,9 +34,7 @@
         {
           config,
           self',
-          inputs',
           pkgs,
-          system,
           lib,
           ...
         }:
@@ -102,8 +100,6 @@
                 p: with p; [
                   qiskit
                   qiskit-aer
-                  qiskit-algorithms
-                  qiskit-nature
                 ]
               ))
             ]

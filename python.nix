@@ -13,8 +13,12 @@ let
       qiskit-machine-learning = self.callPackage ./pkgs/qiskit-machine-learning.nix {
         qiskit_1 = self.qiskit_1;
       };
-      qiskit-algorithms = self.callPackage ./pkgs/qiskit-algorithms.nix { };
-      qiskit-nature = self.callPackage ./pkgs/qiskit-nature.nix { };
+      qiskit-algorithms = self.callPackage ./pkgs/qiskit-algorithms.nix {
+        qiskit_1 = self.qiskit_1;
+      };
+      qiskit-nature = self.callPackage ./pkgs/qiskit-nature.nix {
+        qiskit_1 = self.qiskit_1;
+      };
     };
   };
 in
