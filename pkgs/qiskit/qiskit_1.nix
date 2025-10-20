@@ -6,12 +6,13 @@
   buildPythonPackage,
   rustworkx,
   numpy,
+  sympy,
   scipy,
   dill,
   python-dateutil,
   stevedore,
   typing-extensions,
-  symengine_130,
+  python_symengine_130,
   setuptools,
   setuptools-rust,
   ...
@@ -30,12 +31,13 @@ buildPythonPackage rec {
   propagatedBuildInputs = [
     rustworkx
     numpy
+    sympy
     scipy
     dill
     python-dateutil
     stevedore
     typing-extensions
-    symengine_130
+    python_symengine_130
   ];
   nativeBuildInputs = [
     setuptools-rust
