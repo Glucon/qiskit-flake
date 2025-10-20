@@ -16,6 +16,9 @@ let
       qiskit-aer = self.callPackage ./pkgs/qiskit-aer {
         # inherit spdlog_1_9_2 nlohmann_json_3_1_1;
       };
+      qiskit-aer_qiskit_1 = self.callPackage ./pkgs/qiskit-aer {
+        qiskit_1 = self.qiskit_1;
+      };
       qiskit-machine-learning = self.callPackage ./pkgs/qiskit-machine-learning.nix {
         qiskit_1 = self.qiskit_1;
       };

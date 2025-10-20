@@ -75,6 +75,10 @@
                   value = self'.legacyPackages.${v}.pkgs.qiskit-aer;
                 }
                 {
+                  name = "qiskit-aer_qiskit_1_${v}";
+                  value = self'.legacyPackages.${v}.pkgs.qiskit-aer_qiskit_1;
+                }
+                {
                   name = "qiskit-machine-learning_${v}";
                   value = self'.legacyPackages.${v}.pkgs.qiskit-machine-learning;
                 }
